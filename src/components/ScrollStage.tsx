@@ -26,7 +26,14 @@ const CAPABILITIES = [
 ];
 
 const SECTION_SHELL =
-  'relative flex min-h-screen supports-[height:100svh]:min-h-[100svh] flex-col justify-between px-5 sm:px-8 md:px-12 pt-24 sm:pt-28 pb-12 md:pb-16';
+  'relative flex flex-col justify-between px-5 sm:px-8 md:px-12 pt-24 sm:pt-28 pb-12 md:pb-16';
+
+// La navbar reste dans le flux (h-16) : la premiere section retire donc
+// sa hauteur pour que le premier ecran fasse exactement 100vh.
+const SECTION_ONE_HEIGHT =
+  'min-h-[calc(100vh-4rem)] supports-[height:100svh]:min-h-[calc(100svh-4rem)]';
+
+const SECTION_HEIGHT = 'min-h-screen supports-[height:100svh]:min-h-[100svh]';
 
 const BADGE =
   'inline-flex border-l-2 border-white bg-white/15 px-3 py-1.5 backdrop-blur-md font-mono text-[11px] uppercase tracking-[0.15em] text-white drop-shadow-md';
@@ -45,7 +52,7 @@ export default function ScrollStage({ scrollerRef }: { scrollerRef: RefObject<HT
         </div>
 
         <div className="relative z-10 -mt-[100vh] supports-[height:100svh]:-mt-[100svh]">
-          <nav className="sticky top-0 z-50 -mb-16 flex h-16 items-center justify-between border-b border-white/15 px-5 backdrop-blur-md sm:px-8 md:px-12">
+          <nav className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-white/15 px-5 backdrop-blur-md sm:px-8 md:px-12">
             <Reveal delay={0}>
               <a href="#" className="flex items-center gap-2">
                 <Hexagon size={24} strokeWidth={1.5} />
@@ -70,7 +77,7 @@ export default function ScrollStage({ scrollerRef }: { scrollerRef: RefObject<HT
             </Reveal>
           </nav>
 
-          <section className={SECTION_SHELL}>
+          <section className={`${SECTION_SHELL} ${SECTION_ONE_HEIGHT}`}>
             <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
               <div className="flex flex-col gap-2">
                 {SERVICES.map((service, i) => (
@@ -128,7 +135,7 @@ export default function ScrollStage({ scrollerRef }: { scrollerRef: RefObject<HT
 
           <div aria-hidden className="h-[80vh]" />
 
-          <section className={SECTION_SHELL}>
+          <section className={`${SECTION_SHELL} ${SECTION_HEIGHT}`}>
             <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
               <Reveal delay={120}>
                 <span className={BADGE}>Expertise structurelle</span>

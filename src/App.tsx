@@ -7,6 +7,8 @@ export default function App() {
   const [activeSection, setActiveSection] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
   const featuresRef = useRef<HTMLDivElement>(null);
+  const featuresBlockRef = useRef<HTMLDivElement>(null);
+  const [featuresVisible, setFeaturesVisible] = useState(false);
 
   const handleScroll = useCallback(
     (e: WheelEvent) => {
@@ -64,6 +66,27 @@ export default function App() {
     };
   }, [handleScroll, activeSection, transitioning]);
 
+  // La section blanche n'est plus la première du calque : ses animations
+  // d'entrée se déclenchent quand elle arrive à l'écran, pas au changement
+  // de section.
+  useEffect(() => {
+    const block = featuresBlockRef.current;
+    if (!block) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setFeaturesVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15, root: featuresRef.current }
+    );
+
+    observer.observe(block);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="relative h-screen w-full overflow-hidden">
       <div
@@ -86,8 +109,10 @@ export default function App() {
           pointerEvents: activeSection === 1 ? 'auto' : 'none',
         }}
       >
-        <Features active={activeSection === 1} />
         <ScrollStage scrollerRef={featuresRef} />
+        <div ref={featuresBlockRef}>
+          <Features active={featuresVisible} />
+        </div>
       </div>
     </main>
   );
