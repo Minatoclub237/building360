@@ -1,3 +1,5 @@
+import { useInView } from '@/components/scroll/Reveal';
+
 const CARDS = [
   {
     title: 'Devis\néclair',
@@ -21,11 +23,12 @@ const CARDS = [
 
 const NAV_LINKS = ['Solutions', 'Secteurs', 'Ressources', 'Carrières'];
 
-export default function Features({ active }: { active: boolean }) {
-  const anim = (cls: string) => (active ? cls : 'opacity-0');
+export default function Features() {
+  const { ref, inView } = useInView<HTMLElement>();
+  const anim = (cls: string) => (inView ? cls : 'opacity-0');
 
   return (
-    <section className="relative min-h-screen w-full bg-white font-inter p-2 sm:p-3">
+    <section ref={ref} className="relative min-h-screen w-full bg-white font-inter p-2 sm:p-3">
       <div
         className={`relative border border-neutral-200 rounded-sm p-1 sm:p-1 min-h-[calc(100vh-1rem)] sm:min-h-[calc(100vh-1.5rem)] ${anim(
           'animate-border-draw'

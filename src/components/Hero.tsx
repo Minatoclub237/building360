@@ -148,8 +148,8 @@ export default function Hero({ onAdvance }: { onAdvance: () => void }) {
                   className="inline-flex items-center gap-2 px-5 py-3.5 rounded-sm border border-gold-dark text-black text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black/5 transition-colors animate-fade-up"
                   style={{ animationDelay: '1150ms' }}
                 >
-                  Découvrir
-                  <ChevronDown size={16} />
+                  Défiler
+                  <ChevronDown size={16} className="animate-bounce" />
                 </button>
               </div>
             </div>

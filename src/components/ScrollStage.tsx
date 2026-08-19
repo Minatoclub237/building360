@@ -1,6 +1,6 @@
-import { useRef, type RefObject } from 'react';
+import { useRef } from 'react';
 import { ChevronRight, Hexagon } from 'lucide-react';
-import Reveal, { ScrollerContext } from '@/components/scroll/Reveal';
+import Reveal from '@/components/scroll/Reveal';
 import ScrollVideo from '@/components/scroll/ScrollVideo';
 
 const SERVICES = ['/ MAÇONNERIE GÉNÉRALE', '/ GROS ŒUVRE', '/ RÉNOVATION & EXTENSION'];
@@ -41,14 +41,13 @@ const BADGE =
 const HEADLINE =
   'text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.05] tracking-tight text-white drop-shadow-lg';
 
-export default function ScrollStage({ scrollerRef }: { scrollerRef: RefObject<HTMLElement> }) {
+export default function ScrollStage() {
   const rangeRef = useRef<HTMLDivElement>(null);
 
   return (
-    <ScrollerContext.Provider value={scrollerRef}>
       <div ref={rangeRef} className="scroll-stage relative bg-[#0a0a0a] font-inter text-white antialiased">
         <div className="sticky top-0 z-0 h-screen supports-[height:100svh]:h-[100svh]">
-          <ScrollVideo scrollerRef={scrollerRef} rangeRef={rangeRef} />
+          <ScrollVideo rangeRef={rangeRef} />
         </div>
 
         <div className="relative z-10 -mt-[100vh] supports-[height:100svh]:-mt-[100svh]">
@@ -208,6 +207,5 @@ export default function ScrollStage({ scrollerRef }: { scrollerRef: RefObject<HT
           </section>
         </div>
       </div>
-    </ScrollerContext.Provider>
   );
 }

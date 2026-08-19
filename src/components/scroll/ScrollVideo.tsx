@@ -8,11 +8,10 @@ const FRAME_WIDTH = 960;
 const LERP = 0.12;
 
 type Props = {
-  scrollerRef: RefObject<HTMLElement>;
   rangeRef: RefObject<HTMLElement>;
 };
 
-export default function ScrollVideo({ scrollerRef, rangeRef }: Props) {
+export default function ScrollVideo({ rangeRef }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const framesRef = useRef<ImageBitmap[]>([]);
@@ -27,20 +26,17 @@ export default function ScrollVideo({ scrollerRef, rangeRef }: Props) {
   // Scroll progress + rAF draw loop. offsetTop is measured outside the scroll
   // handler and refreshed on resize only.
   useEffect(() => {
-    const scroller = scrollerRef.current;
     const range = rangeRef.current;
     const canvas = canvasRef.current;
     const video = videoRef.current;
-    if (!scroller || !range || !canvas || !video) return;
+    if (!range || !canvas || !video) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const measure = () => {
-      const rangeRect = range.getBoundingClientRect();
-      const scrollerRect = scroller.getBoundingClientRect();
       metricsRef.current = {
-        top: rangeRect.top - scrollerRect.top + scroller.scrollTop,
+        top: range.getBoundingClientRect().top + window.scrollY,
         height: range.offsetHeight,
       };
 
@@ -53,8 +49,8 @@ export default function ScrollVideo({ scrollerRef, rangeRef }: Props) {
 
     const onScroll = () => {
       const { top, height } = metricsRef.current;
-      const denom = Math.max(1, height - scroller.clientHeight);
-      const raw = (scroller.scrollTop - top) / denom;
+      const denom = Math.max(1, height - window.innerHeight);
+      const raw = (window.scrollY - top) / denom;
       targetRef.current = raw < 0 ? 0 : raw > 1 ? 1 : raw;
     };
 
@@ -108,16 +104,16 @@ export default function ScrollVideo({ scrollerRef, rangeRef }: Props) {
     measure();
     onScroll();
     raf = requestAnimationFrame(tick);
-    scroller.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
 
     return () => {
       cancelAnimationFrame(raf);
       window.clearTimeout(resizeTimer);
-      scroller.removeEventListener('scroll', onScroll);
+      window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
     };
-  }, [scrollerRef, rangeRef]);
+  }, [rangeRef]);
 
   // Offscreen frame cache: decoded once, then the canvas scrubs bitmaps
   // instead of seeking the video element.
