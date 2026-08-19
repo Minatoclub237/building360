@@ -32,7 +32,7 @@ export default function Footer() {
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
-              href="#"
+              href="#contact"
               className="inline-flex items-center justify-center gap-2 rounded-sm bg-dark px-7 py-4 text-[13px] font-medium uppercase tracking-[0.07em] text-gold transition-colors hover:bg-black"
             >
               Demander un devis
@@ -69,7 +69,7 @@ export default function Footer() {
             {PRESTATIONS.map((item) => (
               <a
                 key={item}
-                href="#"
+                href="#contact"
                 className="text-[13px] text-dark/80 transition-colors hover:text-dark"
               >
                 {item}

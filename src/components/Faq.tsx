@@ -206,7 +206,7 @@ export default function Faq() {
                     <AccordionContent className="pb-7 text-sm text-foreground/60 leading-relaxed">
                       {item.a}
                       <a
-                        href="#"
+                        href="#contact"
                         className="mt-5 inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.07em] text-dark transition-colors hover:bg-white"
                       >
                         {item.cta}

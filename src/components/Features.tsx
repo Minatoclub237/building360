@@ -55,14 +55,15 @@ export default function Features() {
               ))}
             </div>
 
-            <button
+            <a
+              href="#contact"
               className={`hidden md:inline-flex px-6 py-3.5 bg-dark rounded-sm text-white text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black transition-colors ${anim(
                 'animate-fade-up'
               )}`}
               style={{ animationDelay: '750ms' }}
             >
               Demander un devis
-            </button>
+            </a>
           </nav>
 
           <div className="flex-1 flex flex-col px-5 sm:px-8 lg:px-12 py-8 sm:py-10 lg:py-14">
@@ -95,13 +96,13 @@ export default function Features() {
               style={{ animationDelay: '1200ms' }}
             >
               <a
-                href="#"
+                href="#contact"
                 className="text-black text-[11px] font-semibold uppercase tracking-[0.05em] underline underline-offset-4 decoration-neutral-400 hover:decoration-neutral-900 transition-colors"
               >
                 Prendre rendez-vous
               </a>
               <a
-                href="#"
+                href="#realisations"
                 className="text-black text-[11px] font-semibold uppercase tracking-[0.05em] underline underline-offset-4 decoration-neutral-400 hover:decoration-neutral-900 transition-colors"
               >
                 Voir nos chantiers

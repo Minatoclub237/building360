@@ -48,12 +48,13 @@ export default function Hero({ onAdvance }: { onAdvance: () => void }) {
             ))}
           </div>
 
-          <button
+          <a
+            href="#contact"
             className="hidden md:inline-flex px-6 py-3.5 bg-dark rounded-sm text-gold text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black transition-colors animate-fade-up"
             style={{ animationDelay: '820ms' }}
           >
             Demander un devis
-          </button>
+          </a>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -101,14 +102,16 @@ export default function Hero({ onAdvance }: { onAdvance: () => void }) {
             ))}
           </div>
           <div className="px-5 sm:px-8 mt-6">
-            <button
+            <a
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
               className={`inline-flex px-6 py-4 bg-dark rounded-sm text-gold text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black transition-all duration-400 ${
                 menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
               }`}
               style={{ transitionDelay: menuOpen ? `${80 + NAV_LINKS.length * 50}ms` : '0ms' }}
             >
               Demander un devis
-            </button>
+            </a>
           </div>
         </div>
 
@@ -143,12 +146,13 @@ export default function Hero({ onAdvance }: { onAdvance: () => void }) {
                 L&apos;assurance nouvelle génération pour les bâtisseurs et les entreprises qui construisent les infrastructures de demain.
               </p>
               <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-3">
-                <button
+                <a
+                  href="#contact"
                   className="inline-flex px-6 py-3.5 bg-dark rounded-sm text-gold text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black transition-colors animate-fade-up"
                   style={{ animationDelay: '1050ms' }}
                 >
                   Demander un devis
-                </button>
+                </a>
                 <button
                   onClick={onAdvance}
                   className="inline-flex items-center gap-2 px-5 py-3.5 rounded-sm border border-gold-dark text-black text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black/5 transition-colors animate-fade-up"

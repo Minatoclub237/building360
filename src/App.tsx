@@ -4,6 +4,7 @@ import Features from '@/components/Features';
 import ScrollStage from '@/components/ScrollStage';
 import Realisations from '@/components/Realisations';
 import Faq from '@/components/Faq';
+import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 // Le hero reste en place pendant que la section suivante glisse par-dessus :
@@ -81,6 +82,8 @@ export default function App() {
       <Realisations />
 
       <Faq />
+
+      <Contact />
 
       <Footer />
     </main>

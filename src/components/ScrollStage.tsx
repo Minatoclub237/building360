@@ -90,10 +90,13 @@ export default function ScrollStage() {
                     <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-white/60">
                       Building360 — Gros œuvre
                     </p>
-                    <button className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-white px-4 py-2 text-xs font-medium text-black transition-colors duration-300 hover:bg-white/85">
+                    <a
+                      href="#contact"
+                      className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-white px-4 py-2 text-xs font-medium text-black transition-colors duration-300 hover:bg-white/85"
+                    >
                       Rendez-vous de 15 min
                       <ChevronRight size={14} />
-                    </button>
+                    </a>
                   </div>
                 </div>
               </Reveal>
@@ -135,13 +138,19 @@ export default function ScrollStage() {
 
                 <Reveal delay={420} className="mt-8">
                   <div className="flex flex-wrap gap-3">
-                    <button className="inline-flex items-center gap-1 rounded-full bg-white px-5 py-2.5 text-xs font-medium text-black transition-colors duration-300 hover:bg-white/85 sm:text-sm">
+                    <a
+                      href="#realisations"
+                      className="inline-flex items-center gap-1 rounded-full bg-white px-5 py-2.5 text-xs font-medium text-black transition-colors duration-300 hover:bg-white/85 sm:text-sm"
+                    >
                       Voir nos chantiers
                       <ChevronRight size={14} />
-                    </button>
-                    <button className="rounded-full border border-white/25 bg-white/10 px-5 py-2.5 text-xs backdrop-blur-md transition-colors duration-300 hover:bg-white/20 sm:text-sm">
+                    </a>
+                    <a
+                      href="#contact"
+                      className="rounded-full border border-white/25 bg-white/10 px-5 py-2.5 text-xs backdrop-blur-md transition-colors duration-300 hover:bg-white/20 sm:text-sm"
+                    >
                       Demander un devis
-                    </button>
+                    </a>
                   </div>
                 </Reveal>
               </div>

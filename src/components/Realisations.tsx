@@ -103,10 +103,13 @@ export default function Realisations() {
                     <h3 className="mt-1 whitespace-pre-line text-white text-2xl sm:text-3xl font-semibold leading-[1.1]">
                       {projet.titre}
                     </h3>
-                    <button className="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.07em] text-black transition-colors hover:bg-white/85">
+                    <a
+                      href="#contact"
+                      className="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.07em] text-black transition-colors hover:bg-white/85"
+                    >
                       <Phone size={14} />
                       Prendre un RDV
-                    </button>
+                    </a>
                   </div>
                   <ArrowUpRight
                     size={22}
