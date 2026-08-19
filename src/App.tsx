@@ -3,6 +3,8 @@ import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import ScrollStage from '@/components/ScrollStage';
 import Realisations from '@/components/Realisations';
+import Faq from '@/components/Faq';
+import Footer from '@/components/Footer';
 
 // Le hero reste en place pendant que la section suivante glisse par-dessus :
 // il s'efface légèrement sur la hauteur d'un écran.
@@ -77,6 +79,10 @@ export default function App() {
       </div>
 
       <Realisations />
+
+      <Faq />
+
+      <Footer />
     </main>
   );
 }
