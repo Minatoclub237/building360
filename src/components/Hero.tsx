@@ -115,66 +115,62 @@ export default function Hero({ onAdvance }: { onAdvance: () => void }) {
           </div>
         </div>
 
-        <div className="relative z-10 flex-1 grid grid-cols-1 grid-rows-[auto_minmax(0,1fr)] lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] min-h-0">
-          <div className="flex flex-col justify-between px-5 sm:px-8 lg:px-12 pt-6 sm:pt-10 lg:pt-14 pb-6 sm:pb-12">
-            <h1 className="font-octosquares font-bold text-black uppercase leading-[0.9] select-none">
-              <span
-                className="block text-[clamp(1.8rem,7vw,5.5rem)] animate-fade-up"
-                style={{ animationDelay: '500ms' }}
-              >
-                Éliminer
-              </span>
-              <span
-                className="block text-[clamp(1.8rem,7vw,5.5rem)] mt-2 sm:mt-3 animate-fade-up"
-                style={{ animationDelay: '620ms' }}
-              >
-                les frictions
-              </span>
-              <span
-                className="block text-[clamp(1.8rem,7vw,5.5rem)] mt-2 sm:mt-3 animate-fade-up"
-                style={{ animationDelay: '740ms' }}
-              >
-                du risque
-              </span>
-            </h1>
+        <div className="relative z-10 flex-1 grid grid-cols-1 grid-rows-[auto_auto_minmax(0,1fr)_auto] lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)_auto_auto] min-h-0">
+          <h1 className="font-octosquares font-bold text-black uppercase leading-[0.9] select-none px-5 sm:px-8 lg:px-12 pt-6 sm:pt-10 lg:pt-14 lg:col-start-1 lg:row-start-1">
+            <span
+              className="block text-[clamp(1.8rem,7vw,5.5rem)] animate-fade-up"
+              style={{ animationDelay: '500ms' }}
+            >
+              Éliminer
+            </span>
+            <span
+              className="block text-[clamp(1.8rem,7vw,5.5rem)] mt-2 sm:mt-3 animate-fade-up"
+              style={{ animationDelay: '620ms' }}
+            >
+              les frictions
+            </span>
+            <span
+              className="block text-[clamp(1.8rem,7vw,5.5rem)] mt-2 sm:mt-3 animate-fade-up"
+              style={{ animationDelay: '740ms' }}
+            >
+              du risque
+            </span>
+          </h1>
 
-            <div className="mt-6 lg:mt-0">
-              <p
-                className="max-w-[26rem] text-black text-[14px] sm:text-[15px] font-medium uppercase leading-[1.4] tracking-[0.04em] animate-fade-up"
-                style={{ animationDelay: '900ms' }}
-              >
-                L&apos;assurance nouvelle génération pour les bâtisseurs et les entreprises qui construisent les infrastructures de demain.
-              </p>
-              <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-3">
-                <a
-                  href="#contact"
-                  className="inline-flex px-6 py-3.5 bg-dark rounded-sm text-gold text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black transition-colors animate-fade-up"
-                  style={{ animationDelay: '1050ms' }}
-                >
-                  Demander un devis
-                </a>
-                <button
-                  onClick={onAdvance}
-                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-sm border border-gold-dark text-black text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black/5 transition-colors animate-fade-up"
-                  style={{ animationDelay: '1150ms' }}
-                >
-                  Défiler
-                  <ChevronDown size={16} className="animate-bounce" />
-                </button>
-              </div>
-            </div>
-          </div>
+          <p
+            className="max-w-[26rem] px-5 sm:px-8 lg:px-12 mt-6 lg:mt-0 mb-5 sm:mb-6 text-black text-[14px] sm:text-[15px] font-medium uppercase leading-[1.4] tracking-[0.04em] animate-fade-up lg:col-start-1 lg:row-start-2"
+            style={{ animationDelay: '900ms' }}
+          >
+            L&apos;assurance nouvelle génération pour les bâtisseurs et les entreprises qui construisent les infrastructures de demain.
+          </p>
 
           <div
-            className="flex min-h-0 overflow-hidden border-t lg:border-t-0 lg:border-l border-dashed border-gold-dark p-2 animate-scale-in"
+            className="flex min-h-0 overflow-hidden border-t lg:border-t-0 lg:border-l border-dashed border-gold-dark p-2 animate-scale-in lg:col-start-2 lg:row-start-1 lg:row-span-3"
             style={{ animationDelay: '600ms' }}
           >
             <video autoPlay muted loop playsInline className="w-full h-full object-cover rounded-sm">
-              <source
-                src="/hero.mp4"
-                type="video/mp4"
-              />
+              <source src="/hero.mp4" type="video/mp4" />
             </video>
+          </div>
+
+          {/* En mobile ces boutons passent sous la vidéo ; en lg ils reviennent
+              en bas de la colonne de texte. */}
+          <div className="flex flex-wrap items-center gap-3 px-5 sm:px-8 lg:px-12 pt-5 sm:pt-6 pb-6 sm:pb-12 border-t lg:border-t-0 border-dashed border-gold-dark lg:pt-0 lg:col-start-1 lg:row-start-3">
+            <a
+              href="#contact"
+              className="inline-flex px-6 py-3.5 bg-dark rounded-sm text-gold text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black transition-colors animate-fade-up"
+              style={{ animationDelay: '1050ms' }}
+            >
+              Demander un devis
+            </a>
+            <button
+              onClick={onAdvance}
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-sm border border-gold-dark text-black text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black/5 transition-colors animate-fade-up"
+              style={{ animationDelay: '1150ms' }}
+            >
+              Défiler
+              <ChevronDown size={16} className="animate-bounce" />
+            </button>
           </div>
         </div>
       </div>
