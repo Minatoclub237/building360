@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         octosquares: ['"TT Octosquares Trl Cnd"', 'sans-serif'],
         inter: ['"Inter Tight"', 'sans-serif'],
+        mono: ['"Inter Tight"', 'monospace'],
       },
       colors: {
         gold: {

@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
+import ScrollStage from '@/components/ScrollStage';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState(0);
@@ -86,6 +87,7 @@ export default function App() {
         }}
       >
         <Features active={activeSection === 1} />
+        <ScrollStage scrollerRef={featuresRef} />
       </div>
     </main>
   );
