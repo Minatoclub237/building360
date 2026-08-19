@@ -40,7 +40,7 @@ export default function ScrollStage() {
   return (
       <div ref={rangeRef} className="scroll-stage relative bg-[#0a0a0a] font-inter text-white antialiased">
         <div className="sticky top-0 z-0 h-screen supports-[height:100svh]:h-[100svh]">
-          <ScrollVideo rangeRef={rangeRef} />
+          <ScrollVideo />
         </div>
 
         <div className="relative z-10 -mt-[100vh] supports-[height:100svh]:-mt-[100svh]">
