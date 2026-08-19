@@ -10,24 +10,31 @@ export default function App() {
   const featuresBlockRef = useRef<HTMLDivElement>(null);
   const [featuresVisible, setFeaturesVisible] = useState(false);
 
+  const goTo = useCallback((section: number) => {
+    setTransitioning(true);
+    setActiveSection(section);
+    setTimeout(() => setTransitioning(false), 1000);
+  }, []);
+
+  const goToSection = useCallback((section: number) => () => goTo(section), [goTo]);
+
+  const forward = useCallback(() => {
+    if (transitioning || activeSection !== 0) return;
+    goTo(1);
+  }, [activeSection, transitioning, goTo]);
+
+  const backward = useCallback(() => {
+    if (transitioning || activeSection !== 1) return;
+    const el = featuresRef.current;
+    if (el && el.scrollTop <= 0) goTo(0);
+  }, [activeSection, transitioning, goTo]);
+
   const handleScroll = useCallback(
     (e: WheelEvent) => {
-      if (transitioning) return;
-
-      if (e.deltaY > 0 && activeSection === 0) {
-        setTransitioning(true);
-        setActiveSection(1);
-        setTimeout(() => setTransitioning(false), 1000);
-      } else if (e.deltaY < 0 && activeSection === 1) {
-        const el = featuresRef.current;
-        if (el && el.scrollTop <= 0) {
-          setTransitioning(true);
-          setActiveSection(0);
-          setTimeout(() => setTransitioning(false), 1000);
-        }
-      }
+      if (e.deltaY > 0) forward();
+      else if (e.deltaY < 0) backward();
     },
-    [activeSection, transitioning]
+    [forward, backward]
   );
 
   useEffect(() => {
@@ -38,33 +45,28 @@ export default function App() {
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
-      if (transitioning) return;
       const deltaY = touchStartY - e.changedTouches[0].clientY;
+      if (deltaY > 50) forward();
+      else if (deltaY < -50) backward();
+    };
 
-      if (deltaY > 50 && activeSection === 0) {
-        setTransitioning(true);
-        setActiveSection(1);
-        setTimeout(() => setTransitioning(false), 1000);
-      } else if (deltaY < -50 && activeSection === 1) {
-        const el = featuresRef.current;
-        if (el && el.scrollTop <= 0) {
-          setTransitioning(true);
-          setActiveSection(0);
-          setTimeout(() => setTransitioning(false), 1000);
-        }
-      }
+    const handleKey = (e: KeyboardEvent) => {
+      if (['ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) forward();
+      else if (['ArrowUp', 'PageUp'].includes(e.key)) backward();
     };
 
     window.addEventListener('wheel', handleScroll, { passive: true });
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
     window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    window.addEventListener('keydown', handleKey);
 
     return () => {
       window.removeEventListener('wheel', handleScroll);
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('keydown', handleKey);
     };
-  }, [handleScroll, activeSection, transitioning]);
+  }, [handleScroll, forward, backward]);
 
   // La section blanche n'est plus la première du calque : ses animations
   // d'entrée se déclenchent quand elle arrive à l'écran, pas au changement
@@ -97,7 +99,7 @@ export default function App() {
           pointerEvents: activeSection === 0 ? 'auto' : 'none',
         }}
       >
-        <Hero />
+        <Hero onAdvance={goToSection(1)} />
       </div>
 
       <div

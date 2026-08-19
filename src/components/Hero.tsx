@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 
 const NAV_LINKS = ['Solutions', 'Secteurs', 'Ressources', 'Carrières'];
 
-export default function Hero() {
+export default function Hero({ onAdvance }: { onAdvance: () => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -106,7 +106,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative z-10 flex-1 grid grid-cols-1 lg:grid-cols-2 min-h-0">
+        <div className="relative z-10 flex-1 grid grid-cols-1 grid-rows-[auto_minmax(0,1fr)] lg:grid-cols-2 lg:grid-rows-[minmax(0,1fr)] min-h-0">
           <div className="flex flex-col justify-between px-5 sm:px-8 lg:px-12 pt-6 sm:pt-10 lg:pt-14 pb-6 sm:pb-12">
             <h1 className="font-octosquares font-bold text-black uppercase leading-[0.9] select-none">
               <span
@@ -136,17 +136,27 @@ export default function Hero() {
               >
                 L&apos;assurance nouvelle génération pour les bâtisseurs et les entreprises qui construisent les infrastructures de demain.
               </p>
-              <button
-                className="inline-flex mt-5 sm:mt-6 px-6 py-3.5 bg-dark rounded-sm text-gold text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black transition-colors animate-fade-up"
-                style={{ animationDelay: '1050ms' }}
-              >
-                Demander un devis
-              </button>
+              <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-3">
+                <button
+                  className="inline-flex px-6 py-3.5 bg-dark rounded-sm text-gold text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black transition-colors animate-fade-up"
+                  style={{ animationDelay: '1050ms' }}
+                >
+                  Demander un devis
+                </button>
+                <button
+                  onClick={onAdvance}
+                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-sm border border-gold-dark text-black text-[13px] font-medium uppercase tracking-[0.07em] hover:bg-black/5 transition-colors animate-fade-up"
+                  style={{ animationDelay: '1150ms' }}
+                >
+                  Découvrir
+                  <ChevronDown size={16} />
+                </button>
+              </div>
             </div>
           </div>
 
           <div
-            className="flex border-t lg:border-t-0 lg:border-l border-dashed border-gold-dark p-2 animate-scale-in"
+            className="flex min-h-0 overflow-hidden border-t lg:border-t-0 lg:border-l border-dashed border-gold-dark p-2 animate-scale-in"
             style={{ animationDelay: '600ms' }}
           >
             <video autoPlay muted loop playsInline className="w-full h-full object-cover rounded-sm">
