@@ -151,7 +151,7 @@ export default function Hero() {
           >
             <video autoPlay muted loop playsInline className="w-full h-full object-cover rounded-sm">
               <source
-                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260813_100342_9f090e9e-aab8-4f6d-828d-1ace18862aff.mp4"
+                src="/hero.mp4"
                 type="video/mp4"
               />
             </video>
