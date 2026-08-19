@@ -81,7 +81,7 @@ export default function ScrollStage() {
               <Reveal delay={420}>
                 <div className="flex items-center gap-4 rounded-xl bg-white/15 p-3 backdrop-blur-md">
                   <img
-                    src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=480&fit=crop"
+                    src="/chantier/3.webp"
                     alt="Chantier de gros œuvre suivi par Building360"
                     className="h-24 w-20 rounded-lg object-cover"
                   />
