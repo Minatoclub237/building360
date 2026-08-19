@@ -206,6 +206,10 @@ export default function ScrollVideo({ rangeRef }: Props) {
           cacheReady ? 'opacity-100' : 'opacity-0'
         }`}
       />
+
+      {/* Voile haut/bas : la vidéo reste pleine puissance au centre, le texte
+          garde son contraste sur les bandes où il se pose. */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.6)_0%,rgba(0,0,0,0.28)_30%,rgba(0,0,0,0.05)_52%,rgba(0,0,0,0.78)_100%)]" />
     </div>
   );
 }

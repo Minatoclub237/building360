@@ -1,11 +1,9 @@
 import { useRef } from 'react';
-import { ChevronRight, Hexagon } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import Reveal from '@/components/scroll/Reveal';
 import ScrollVideo from '@/components/scroll/ScrollVideo';
 
 const SERVICES = ['/ MAÇONNERIE GÉNÉRALE', '/ GROS ŒUVRE', '/ RÉNOVATION & EXTENSION'];
-
-const NAV_LINKS = ['Réalisations', 'Savoir-faire', 'Le studio', 'Contact'];
 
 const CAPABILITIES = [
   {
@@ -28,11 +26,6 @@ const CAPABILITIES = [
 const SECTION_SHELL =
   'relative flex flex-col justify-between px-5 sm:px-8 md:px-12 pt-24 sm:pt-28 pb-12 md:pb-16';
 
-// La navbar reste dans le flux (h-16) : la premiere section retire donc
-// sa hauteur pour que le premier ecran fasse exactement 100vh.
-const SECTION_ONE_HEIGHT =
-  'min-h-[calc(100vh-4rem)] supports-[height:100svh]:min-h-[calc(100svh-4rem)]';
-
 const SECTION_HEIGHT = 'min-h-screen supports-[height:100svh]:min-h-[100svh]';
 
 const BADGE =
@@ -51,32 +44,7 @@ export default function ScrollStage() {
         </div>
 
         <div className="relative z-10 -mt-[100vh] supports-[height:100svh]:-mt-[100svh]">
-          <nav className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-white/15 px-5 backdrop-blur-md sm:px-8 md:px-12">
-            <Reveal delay={0}>
-              <a href="#" className="flex items-center gap-2">
-                <Hexagon size={24} strokeWidth={1.5} />
-                <span className="text-lg font-medium tracking-tight sm:text-xl">building360</span>
-              </a>
-            </Reveal>
-
-            <div className="hidden items-center gap-8 md:flex lg:gap-10">
-              {NAV_LINKS.map((link, i) => (
-                <Reveal key={link} delay={100 + i * 100}>
-                  <a href="#" className="text-sm text-white/85 transition-colors duration-300 hover:text-white">
-                    {link}
-                  </a>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal delay={500}>
-              <button className="rounded-md border border-white/20 bg-white/15 px-4 py-2 text-xs backdrop-blur-md transition-colors duration-300 hover:bg-white/25 sm:px-5 sm:text-sm">
-                Devis gratuit
-              </button>
-            </Reveal>
-          </nav>
-
-          <section className={`${SECTION_SHELL} ${SECTION_ONE_HEIGHT}`}>
+          <section className={`${SECTION_SHELL} ${SECTION_HEIGHT}`}>
             <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
               <div className="flex flex-col gap-2">
                 {SERVICES.map((service, i) => (
