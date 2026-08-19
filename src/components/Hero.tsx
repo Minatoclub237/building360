@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 
-const NAV_LINKS = ['Solutions', 'Secteurs', 'Ressources', 'Carrières'];
+const NAV_LINKS = [
+  { label: 'Solutions', href: '#solutions' },
+  { label: 'Secteurs', href: '#secteurs' },
+  { label: 'Réalisations', href: '#realisations' },
+  { label: 'FAQ', href: '#faq' },
+];
 
 export default function Hero({ onAdvance }: { onAdvance: () => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,12 +38,12 @@ export default function Hero({ onAdvance }: { onAdvance: () => void }) {
           <div className="hidden md:flex items-center gap-1">
             {NAV_LINKS.map((link, i) => (
               <a
-                key={link}
-                href="#"
+                key={link.label}
+                href={link.href}
                 className="px-5 py-2.5 bg-black/5 rounded-sm text-[13px] font-medium uppercase tracking-[0.07em] text-black hover:bg-black/10 transition-colors animate-fade-up"
                 style={{ animationDelay: `${500 + i * 80}ms` }}
               >
-                {link}
+                {link.label}
               </a>
             ))}
           </div>
@@ -83,14 +88,15 @@ export default function Hero({ onAdvance }: { onAdvance: () => void }) {
           <div className="flex flex-col px-5 sm:px-8 pt-8 gap-2">
             {NAV_LINKS.map((link, i) => (
               <a
-                key={link}
-                href="#"
+                key={link.label}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
                 className={`px-5 py-4 bg-black/5 rounded-sm text-[14px] font-medium uppercase tracking-[0.07em] text-black hover:bg-black/10 transition-all duration-400 ${
                   menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
                 }`}
                 style={{ transitionDelay: menuOpen ? `${80 + i * 50}ms` : '0ms' }}
               >
-                {link}
+                {link.label}
               </a>
             ))}
           </div>

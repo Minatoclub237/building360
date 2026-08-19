@@ -180,7 +180,7 @@ export default function Faq() {
                   passer par un commercial.
                 </p>
                 <a
-                  href="#"
+                  href="mailto:sasbuilding360@gmail.com"
                   className="mt-6 inline-flex items-center gap-1 text-sm text-foreground hover:text-foreground/80"
                 >
                   Nous écrire <span aria-hidden>→</span>

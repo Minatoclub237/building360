@@ -8,7 +8,12 @@ const PRESTATIONS = [
   'Rénovation & reprise',
 ];
 
-const ENTREPRISE = ['Réalisations', 'Savoir-faire', 'Déroulé d’un chantier', 'Objections fréquentes'];
+const ENTREPRISE = [
+  { label: 'Réalisations', href: '#realisations' },
+  { label: 'Savoir-faire', href: '#solutions' },
+  { label: 'Secteurs', href: '#secteurs' },
+  { label: 'Objections fréquentes', href: '#faq' },
+];
 
 export default function Footer() {
   return (
@@ -34,11 +39,11 @@ export default function Footer() {
               <ArrowUpRight size={16} />
             </a>
             <a
-              href="tel:+33100000000"
+              href="tel:+33781410081"
               className="inline-flex items-center justify-center gap-2 rounded-sm border border-gold-dark px-7 py-4 text-[13px] font-medium uppercase tracking-[0.07em] text-dark transition-colors hover:bg-black/5"
             >
               <Phone size={15} />
-              01 XX XX XX XX
+              07 81 41 00 81
             </a>
           </div>
         </div>
@@ -78,11 +83,11 @@ export default function Footer() {
             </p>
             {ENTREPRISE.map((item) => (
               <a
-                key={item}
-                href="#"
+                key={item.label}
+                href={item.href}
                 className="text-[13px] text-dark/80 transition-colors hover:text-dark"
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </nav>
@@ -98,21 +103,21 @@ export default function Footer() {
               Île-de-France
             </p>
             <a
-              href="tel:+33100000000"
+              href="tel:+33781410081"
               className="flex items-center gap-2 text-[13px] text-dark/80 transition-colors hover:text-dark"
             >
               <Phone size={15} />
-              01 XX XX XX XX
+              07 81 41 00 81
             </a>
             <a
-              href="mailto:contact@building360.fr"
+              href="mailto:sasbuilding360@gmail.com"
               className="flex items-center gap-2 text-[13px] text-dark/80 transition-colors hover:text-dark"
             >
               <Mail size={15} />
-              contact@building360.fr
+              sasbuilding360@gmail.com
             </a>
             <p className="mt-2 text-[11px] uppercase tracking-[0.1em] text-dark/50">
-              Lun – Ven · 8h – 18h
+              Lun – Sam · 7h – 21h · Dim. fermé
             </p>
           </div>
         </div>

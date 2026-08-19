@@ -2,14 +2,19 @@ import Marquee from '@/components/Marquee';
 import { useInView } from '@/components/scroll/Reveal';
 
 
-const NAV_LINKS = ['Solutions', 'Secteurs', 'Ressources', 'Carrières'];
+const NAV_LINKS = [
+  { label: 'Solutions', href: '#solutions' },
+  { label: 'Secteurs', href: '#secteurs' },
+  { label: 'Réalisations', href: '#realisations' },
+  { label: 'FAQ', href: '#faq' },
+];
 
 export default function Features() {
   const { ref, inView } = useInView<HTMLElement>();
   const anim = (cls: string) => (inView ? cls : 'opacity-0');
 
   return (
-    <section ref={ref} className="relative min-h-screen w-full bg-white font-inter p-2 sm:p-3">
+    <section id="secteurs" ref={ref} className="relative min-h-screen w-full bg-white font-inter p-2 sm:p-3">
       <div
         className={`relative border border-neutral-200 rounded-sm p-1 sm:p-1 min-h-[calc(100vh-1rem)] sm:min-h-[calc(100vh-1.5rem)] ${anim(
           'animate-border-draw'
@@ -38,14 +43,14 @@ export default function Features() {
             <div className="hidden md:flex items-center gap-1">
               {NAV_LINKS.map((link, i) => (
                 <a
-                  key={link}
-                  href="#"
+                  key={link.label}
+                  href={link.href}
                   className={`px-5 py-2.5 bg-black/5 rounded-sm text-[13px] font-medium uppercase tracking-[0.07em] text-black hover:bg-black/10 transition-colors ${anim(
                     'animate-fade-up'
                   )}`}
                   style={{ animationDelay: `${450 + i * 70}ms` }}
                 >
-                  {link}
+                  {link.label}
                 </a>
               ))}
             </div>

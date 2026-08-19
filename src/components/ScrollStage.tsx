@@ -38,7 +38,7 @@ export default function ScrollStage() {
   const rangeRef = useRef<HTMLDivElement>(null);
 
   return (
-      <div ref={rangeRef} className="scroll-stage relative bg-[#0a0a0a] font-inter text-white antialiased">
+      <div id="solutions" ref={rangeRef} className="scroll-stage relative bg-[#0a0a0a] font-inter text-white antialiased">
         <div className="sticky top-0 z-0 h-screen supports-[height:100svh]:h-[100svh]">
           <ScrollVideo />
         </div>
